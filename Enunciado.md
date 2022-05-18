@@ -14,7 +14,7 @@ Os itens para avaliação são:
 
 [x] formação de um grupo de no máximo 2 integrantes em até uma semana após a divulgação do enunciado do trabalho;
 
-[ ] execução da versão sequencial abaixo (para viabilizar o cálculo de speed-up e eficiência);
+[x] execução da versão sequencial abaixo (para viabilizar o cálculo de speed-up e eficiência);
 
 [ ] implementação da versão paralela do algoritmo em C e OpenMP (considerando a estratégia e a complexidade da solução paralela);
 
