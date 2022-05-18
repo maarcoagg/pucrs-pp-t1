@@ -83,9 +83,8 @@ echo ################
 ################
 
 ############# If running a sequential or openMP program
-:> mandelbrot-seq.tempo ; :> mandelbrot-seq.output ; for i in `seq 500 5000 500`; do gcc mandelbrot-seq.c -o mandelbrot-seq -DNPOINTS=$i -fopenmp ; ./mandelbrot-seq 1>> mandelbrot-seq.output 2>> mandelbrot-seq.tempo ; done
-
-##./mandelbrot-seq
+> mandelbrot-seq.output
+for i in {500..5000..500}; do echo -n "$i " >> mandelbrot-seq.output ; gcc mandelbrot-seq.c -o bin/mandelbrot-seq-$i -DNPOINTS=$i -fopenmp ; ./mandelbrot-seq >> mandelbrot-seq.output ; done
 
 ################
 
