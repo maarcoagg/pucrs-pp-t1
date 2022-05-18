@@ -56,7 +56,7 @@ will create a separate IO file per node. # %s stepid of the running job. # %t ta
 
         ################ Please, change this directory to your working dir.
 
-        #SBATCH -D /home/user/example
+        #SBATCH -D /home/pp12713/t1
 
         ################
 
