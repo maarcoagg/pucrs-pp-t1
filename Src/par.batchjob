@@ -25,6 +25,8 @@
 
 ################ Please, change this e-mail address to yours
 
+## Marco = marco.goedert@edu.pucrs.br
+## Yuri = yuri.seixas@edu.pucrs.br
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=marco.goedert@edu.pucrs.br
 
@@ -52,12 +54,14 @@
 # or
 
 ## all output in same file
-#SBATCH -o %x.%j.out
+#SBATCH -o outputs/%x.%j.out
 
 ################
 
 ################ Please, change this directory to your working dir.
 
+## Marco = pp12713
+## Yuri = pp12716
 #SBATCH -D /home/pp12713/t1
 
 ################
@@ -76,15 +80,9 @@ echo JOB_ID:
 echo $SLURM_JOBID
 echo ################
 
-############# Command example, if using MPI
+############# Running openMP program
 
-## :> mandelbrot-seq.tempo ; :> mandelbrot-seq.output ; for i in seq 500 5000 500; do gcc -o mandelbrot-seq.c mandelbrot-seq -D NPOINTS=$i -fopenmp; ./mandelbrot-seq 1>> mandelbrot-seq.output 2>> mandelbrot-seq.tempo ; done
-
-################
-
-############# If running a sequential or openMP program
-> mandelbrot-seq.output
-for i in {500..5000..500}; do echo -n "$i " >> mandelbrot-seq.output ; gcc mandelbrot-seq.c -o bin/mandelbrot-seq-$i -DNPOINTS=$i -fopenmp ; ./mandelbrot-seq >> mandelbrot-seq.output ; done
+:> outputs/par.output ; for i in `seq 500 500 5000`; do echo -n "$i - " >> outputs/par.output ; gcc mandelbrot-par.c -o bin/mandelbrot-par -DNPOINTS=$i -fopenmp ; ./bin/mandelbrot-par >> outputs/par.output ; done
 
 ################
 

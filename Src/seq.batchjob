@@ -54,7 +54,7 @@
 # or
 
 ## all output in same file
-#SBATCH -o %x.%j.out
+#SBATCH -o outputs/%x.%j.out
 
 ################
 
@@ -80,15 +80,9 @@ echo JOB_ID:
 echo $SLURM_JOBID
 echo ################
 
-############# Command example, if using MPI
+############# Running openMP program
 
-## :> mandelbrot-seq.tempo ; :> mandelbrot-seq.output ; for i in seq 500 5000 500; do gcc -o mandelbrot-seq.c mandelbrot-seq -D NPOINTS=$i -fopenmp; ./mandelbrot-seq 1>> mandelbrot-seq.output 2>> mandelbrot-seq.tempo ; done
-
-################
-
-############# If running a sequential or openMP program
-
-:> sequencial.output ; for i in `seq 500 500 5000`; do echo -n "$i - " >> sequencial.output ; gcc mandelbrot-seq.c -o mandelbrot-seq -DNPOINTS=$i -fopenmp ; ./mandelbrot-seq >> sequencial.output ; done
+:> outputs/seq.output ; for i in `seq 500 500 1500`; do echo -n "$i - " >> outputs/seq.output ; gcc mandelbrot-seq.c -o bin/mandelbrot-seq -DNPOINTS=$i -fopenmp ; ./bin/mandelbrot-seq >> outputs/seq.output ; done
 
 ################
 

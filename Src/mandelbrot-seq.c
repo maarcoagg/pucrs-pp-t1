@@ -19,7 +19,7 @@ int main() {
   struct complex z, c;
 
   /*
-   *   
+   *
    *
    *     Outer loops run over npoints, initialise z=c
    *
