@@ -82,7 +82,8 @@ echo ################
 
 ############# Running openMP program
 
-:> outputs/par.output ; for i in `seq 500 500 5000`; do echo -n "$i - " >> outputs/par.output ; gcc mandelbrot-par.c -o bin/mandelbrot-par -DNPOINTS=$i -fopenmp ; ./bin/mandelbrot-par >> outputs/par.output ; done
+export OMP_NUM_THREADS=8
+:> outputs/par-8.output ; for i in `seq 500 500 5000`; do echo -n "$i - " >> outputs/par-8.output ; gcc mandelbrot-par.c -o bin/mandelbrot-par-8 -DNPOINTS=$i -fopenmp ; ./bin/mandelbrot-par-8 >> outputs/par-8.output ; done
 
 ################
 
