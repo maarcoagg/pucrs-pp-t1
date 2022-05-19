@@ -25,6 +25,8 @@
 
 ################ Please, change this e-mail address to yours
 
+## Marco = marco.goedert@edu.pucrs.br
+## Yuri = yuri.seixas@edu.pucrs.br
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=marco.goedert@edu.pucrs.br
 
@@ -58,6 +60,8 @@
 
 ################ Please, change this directory to your working dir.
 
+## Marco = pp12713
+## Yuri = pp12716
 #SBATCH -D /home/pp12713/t1
 
 ################
@@ -83,8 +87,8 @@ echo ################
 ################
 
 ############# If running a sequential or openMP program
-> mandelbrot-seq.output
-for i in {500..5000..500}; do echo -n "$i " >> mandelbrot-seq.output ; gcc mandelbrot-seq.c -o bin/mandelbrot-seq-$i -DNPOINTS=$i -fopenmp ; ./mandelbrot-seq >> mandelbrot-seq.output ; done
+
+:> sequencial.output ; for i in `seq 500 500 5000`; do echo -n "$i - " >> sequencial.output ; gcc mandelbrot-seq.c -o mandelbrot-seq -DNPOINTS=$i -fopenmp ; ./mandelbrot-seq >> sequencial.output ; done
 
 ################
 
